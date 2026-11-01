@@ -1,0 +1,2 @@
+import {NextRequest,NextResponse} from 'next/server';import {tmdb} from '../../lib';
+export async function GET(req:NextRequest){const q=req.nextUrl.searchParams;const page=Math.max(1,Math.min(500,Number(q.get('page'))||1));const section=q.get('section')||'popular';const allowed=['popular','top_rated','now_playing','upcoming'];return NextResponse.json(await tmdb(`/movie/${allowed.includes(section)?section:'popular'}`,{page:String(page),region:'US'}));}

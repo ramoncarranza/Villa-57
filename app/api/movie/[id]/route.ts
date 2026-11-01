@@ -1,0 +1,2 @@
+import {NextRequest,NextResponse} from 'next/server';import {tmdb} from '../../../lib';
+export async function GET(_req:NextRequest,{params}:{params:Promise<{id:string}>}){const {id}=await params;if(!/^\d+$/.test(id))return NextResponse.json({error:'Invalid movie ID'},{status:400});const [movie,videos,providers]=await Promise.all([tmdb(`/movie/${id}`),tmdb(`/movie/${id}/videos`),tmdb(`/movie/${id}/watch/providers`)]);return NextResponse.json({movie,videos:videos.results||[],watch:providers.results?.US||null});}
