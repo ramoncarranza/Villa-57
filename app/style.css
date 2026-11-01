@@ -120,3 +120,103 @@ a.provider:hover {
     max-height: 94vh;
   }
 }
+
+
+
+/* VILLA 57 — MOBILE LAYOUT IMPROVEMENTS */
+
+@media (max-width: 600px) {
+
+  /* Compact homepage */
+  .hero {
+    padding-top: 20px;
+    padding-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  /* Full-width movie search */
+  .search {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Swipeable category navigation */
+  nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  /* Default mobile poster grid: two columns */
+  .movies.cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 12px;
+  }
+
+  .movies.cols-1 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .movies.cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px 6px;
+  }
+
+  .movie {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .movie img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+  }
+
+  /* Allow movie titles to use two lines */
+  .movie-name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+    overflow: hidden;
+    line-height: 1.35;
+    min-height: 2.7em;
+    font-size: 13px;
+  }
+
+  .movie-meta {
+    font-size: 12px;
+  }
+
+  .toolbar {
+    gap: 10px;
+  }
+}
