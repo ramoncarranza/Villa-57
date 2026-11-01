@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Search, Play, ExternalLink, X, Clapperboard } from 'lucide-react';
+
+import { Search, Play, ExternalLink, X, Clapperboard, LayoutGrid } from 'lucide-react';
+
 
 type Movie = {
   id: number;
@@ -71,7 +73,9 @@ export default function Home() {
 
   useEffect(() => {
     const saved = localStorage.getItem('villa57-cols');
-    if (saved && [1, 2, 4].includes(Number(saved))) setCols(Number(saved));
+   
+if (saved && Number(saved) >= 1 && Number(saved) <= 8) setCols(Number(saved));
+
   }, []);
 
   useEffect(() => {
@@ -161,17 +165,25 @@ export default function Home() {
 
         <div className="toolbar">
           <h2>{query ? 'Search Results' : sections.find(item => item[0] === section)?.[1]}</h2>
-          <div className="layouts" aria-label="Poster columns">
-            {[1, 2, 4].map(number => (
-              <button
-                key={number}
-                aria-label={`${number} columns`}
-                aria-pressed={cols === number}
-                className={cols === number ? 'active' : ''}
-                onClick={() => setLayout(number)}
-              >{number}</button>
-            ))}
-          </div>
+         
+<div className="layouts" aria-label="Poster columns">
+  <label htmlFor="poster-columns" title="Change poster grid">
+    <LayoutGrid size={22} />
+  </label>
+  <select
+    id="poster-columns"
+    aria-label="Number of poster columns"
+    value={cols}
+    onChange={(e) => setLayout(Number(e.target.value))}
+  >
+    {[1, 2, 3, 4, 5, 6, 7, 8].map((number) => (
+      <option key={number} value={number}>
+        {number} columns
+      </option>
+    ))}
+  </select>
+</div>
+
         </div>
 
         {error && <p className="error">{error} Configure TMDB_READ_ACCESS_TOKEN on the server to enable the catalog.</p>}
