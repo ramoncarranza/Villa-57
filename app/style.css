@@ -20,6 +20,37 @@ header {
 
 .brand b {
   color: #eab657;
+  
+/* VILLA 57 — Mobile layout refinements */
+@media (max-width: 600px) {
+  .movie {
+    min-width: 0;
+  }
+
+  .movie img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .movie-name {
+    font-size: 13px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .movie-meta {
+    font-size: 12px;
+  }
+
+  .toolbar {
+    gap: 8px;
+  }
+}
+
 }
 
 .hero h1 {
